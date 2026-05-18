@@ -1,0 +1,129 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - FLAMES Calculator</title>
+    <meta name="description" content="Learn more about FLAMES Calculator, our mission to preserve nostalgic games, and how we built flamescalculator.in.">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Shrikhand&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fdf4f7 0%, #f4ebf8 100%);
+        }
+        .title-font {
+            font-family: 'Shrikhand', cursive;
+        }
+        @keyframes pulse-heart {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+        .animate-heart {
+            animation: pulse-heart 1.5s infinite;
+        }
+    </style>
+</head>
+<body class="text-slate-800 min-h-screen flex flex-col antialiased">
+
+    <!-- Header Section -->
+    <header class="w-full bg-white/85 backdrop-blur-md border-b border-pink-100 py-3 px-4 sticky top-0 z-50 shadow-xs">
+        <div class="max-w-3xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <span class="text-2xl animate-heart">💖</span>
+                <span class="text-xl md:text-2xl font-bold tracking-tight text-pink-600 title-font">FLAMES</span>
+                <span class="text-[10px] bg-pink-100 text-pink-700 font-extrabold px-2 py-0.5 rounded-full uppercase ml-1">Calculator</span>
+            </a>
+            <div>
+                <a href="index.html" class="bg-pink-50 hover:bg-pink-100 text-pink-700 text-xs font-bold px-4 py-2 rounded-xl transition-all flex items-center space-x-1">
+                    <span>⬅</span>
+                    <span>Back to Home</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow max-w-2xl w-full mx-auto px-4 py-8 space-y-6">
+        
+        <div class="text-center space-y-1">
+            <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">
+                About Us
+            </h1>
+            <p class="text-xs md:text-sm text-slate-500 font-medium">
+                Bringing nostalgic pop culture games to the modern digital era
+            </p>
+        </div>
+
+        <!-- About Us Content Box -->
+        <div class="bg-white/95 rounded-3xl border border-pink-100 shadow-xl p-6 md:p-8 space-y-6 text-xs md:text-sm text-slate-600 leading-relaxed">
+            
+            <section class="space-y-2">
+                <h2 class="text-base font-bold text-slate-900 border-b border-pink-100 pb-1 uppercase tracking-wider">Our Mission</h2>
+                <p>
+                    Welcome to <strong>flamescalculator.in</strong>! Our mission is to keep classic, nostalgic games alive in today's fast-paced digital world. We believe that some of the best memories are created during quiet moments at school, passing around a notebook with friends to calculate compatibility using pen and paper. 
+                </p>
+                <p>
+                    We built this digital <strong>FLAMES Calculator</strong> to let you relive those fun, childhood moments effortlessly on your smartphone, tablet, or desktop, complete with comprehensive step-by-step mathematical breakdowns of how the final answer is computed.
+                </p>
+            </section>
+
+            <section class="space-y-2">
+                <h2 class="text-base font-bold text-slate-900 border-b border-pink-100 pb-1 uppercase tracking-wider">How We Built This Tool</h2>
+                <p>
+                    Our tool is developed using advanced client-side processing algorithms. Unlike other online tools that collect and store user names, <strong>flamescalculator.in</strong> processes your inputs directly inside your local web browser. This means your private information never hits a database server, giving you 100% privacy and lightning-fast results.
+                </p>
+                <p>
+                    We've also integrated <strong>multi-language support</strong>—allowing users to read explanations and results in English, Tamil (தமிழ்), and Hindi (हिंदी).
+                </p>
+            </section>
+
+            <section class="space-y-2">
+                <h2 class="text-base font-bold text-slate-900 border-b border-pink-100 pb-1 uppercase tracking-wider">Why Choose Our Calculator?</h2>
+                <ul class="list-disc pl-5 space-y-1.5">
+                    <li><strong>Full Transparency:</strong> We show you the exact letter-cancellation process step-by-step so you can verify the results manually.</li>
+                    <li><strong>Privacy First:</strong> No data is stored, shared, or compiled on remote servers.</li>
+                    <li><strong>Beautifully Optimized:</strong> Designed specifically for modern mobile viewports with smooth interactions.</li>
+                    <li><strong>One-Click Share:</strong> Easily send your results directly to your close friends or partner via WhatsApp.</li>
+                </ul>
+            </section>
+
+            <section class="space-y-2">
+                <h2 class="text-base font-bold text-slate-900 border-b border-pink-100 pb-1 uppercase tracking-wider">Get in Touch</h2>
+                <p>
+                    We love hearing from our community! If you have any suggestions, feature requests, bug reports, or simply want to share your nostalgic FLAMES story with us, feel free to visit our dedicated <a href="contact.html" class="text-pink-600 hover:underline font-bold">Contact Page</a>.
+                </p>
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full bg-slate-900 text-slate-400 py-8 px-6 border-t border-slate-800 text-xs mt-auto">
+        <div class="max-w-3xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <div>
+                <p class="font-extrabold text-white text-sm tracking-tight mb-0.5">flamescalculator.in</p>
+                <p>&copy; 2026 FLAMES Calculator. All rights reserved.</p>
+            </div>
+            <div class="flex flex-wrap gap-3 text-slate-400 font-semibold">
+                <a href="contact.html" class="hover:text-white transition-all">Contact Us</a>
+                <span class="text-slate-800">|</span>
+                <a href="about.html" class="text-white hover:underline">About Game</a>
+                <span class="text-slate-800">|</span>
+                <a href="privacy.html" class="hover:text-white transition-all">Privacy</a>
+                <span class="text-slate-800">|</span>
+                <a href="disclaimer.html" class="hover:text-white transition-all">Disclaimer</a>
+                <span class="text-slate-800">|</span>
+                <a href="terms.html" class="hover:text-white transition-all">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+
+```

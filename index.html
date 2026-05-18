@@ -1,0 +1,892 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLAMES Calculator - Love & Relationship Compatibility Test Online</title>
+    <meta name="description" content="Calculate compatibility with the free online FLAMES game. Try our relationship compatibility checker, get step-by-step name matching analysis, and read FLAMES meanings.">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for premium typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Shrikhand&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fdf4f7 0%, #f4ebf8 100%);
+        }
+        .title-font {
+            font-family: 'Shrikhand', cursive;
+        }
+        @keyframes pulse-heart {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+        .animate-heart {
+            animation: pulse-heart 1.5s infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="text-slate-800 min-h-screen flex flex-col antialiased">
+
+    <!-- Header Section -->
+    <header class="w-full bg-white/85 backdrop-blur-md border-b border-pink-100 py-3 px-4 sticky top-0 z-50 shadow-xs">
+        <div class="max-w-3xl mx-auto flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2">
+                <span class="text-2xl animate-heart">💖</span>
+                <span class="text-xl md:text-2xl font-bold tracking-tight text-pink-600 title-font">FLAMES</span>
+                <span class="text-[10px] bg-pink-100 text-pink-700 font-extrabold px-2 py-0.5 rounded-full uppercase ml-1">Calculator</span>
+            </a>
+            <div class="flex items-center space-x-2">
+                <label for="lang-select" class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Language:</label>
+                <select id="lang-select" class="bg-slate-50 border border-pink-200 text-slate-700 text-xs font-bold rounded-xl focus:ring-pink-400 focus:border-pink-400 p-1.5 cursor-pointer">
+                    <option value="en">English</option>
+                    <option value="ta">தமிழ் (Tamil)</option>
+                    <option value="hi">हिंदी (Hindi)</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <!-- Custom Modern Toast Notification -->
+    <div id="toast-notification" class="fixed top-20 left-1/2 transform -translate-x-1/2 z-50 bg-slate-900 text-white font-semibold text-xs md:text-sm px-6 py-3 rounded-full shadow-2xl flex items-center space-x-2 transition-all duration-300 opacity-0 pointer-events-none scale-90">
+        <span class="text-emerald-400">✔</span>
+        <span id="toast-message">Result copied successfully!</span>
+    </div>
+
+    <main class="flex-grow max-w-2xl w-full mx-auto px-4 py-6 space-y-6">
+        
+        <!-- Hero Title -->
+        <div class="text-center space-y-1">
+            <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight" id="hero-title">
+                FLAMES Relationship Calculator
+            </h1>
+            <p class="text-xs md:text-sm text-slate-500 font-medium" id="hero-subtitle">
+                Find your true relationship compatibility status based on names
+            </p>
+        </div>
+
+        <!-- Compact Tool Card -->
+        <div class="bg-white/95 rounded-3xl border border-pink-100 shadow-xl p-5 md:p-7 transition-all">
+            <!-- Inputs Form -->
+            <div class="space-y-4">
+                <!-- Name 1 -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 mb-1.5 uppercase tracking-wider" id="label-your-name">
+                        Your Name
+                    </label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-lg">
+                            👤
+                        </span>
+                        <input type="text" id="name1" class="block w-full pl-11 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-pink-300 focus:bg-white font-medium text-base transition-all" placeholder="Enter your name">
+                    </div>
+                </div>
+
+                <!-- Interlocking Icon -->
+                <div class="flex justify-center -my-2.5">
+                    <div class="bg-pink-100 text-pink-600 rounded-full p-2 shadow-sm border-2 border-white relative z-10 animate-float">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Name 2 -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 mb-1.5 uppercase tracking-wider" id="label-partner-name">
+                        Partner's Name
+                    </label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-lg">
+                            💖
+                        </span>
+                        <input type="text" id="name2" class="block w-full pl-11 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-pink-300 focus:bg-white font-medium text-base transition-all" placeholder="Enter partner's name">
+                    </div>
+                </div>
+
+                <!-- Action Buttons (Matches the mockup's horizontal gradient & grey secondary button) -->
+                <div class="space-y-2 pt-2">
+                    <button id="btn-calculate" class="w-full bg-gradient-to-r from-pink-400 to-purple-500 hover:from-pink-500 hover:to-purple-600 text-white font-bold py-3.5 px-6 rounded-xl text-sm md:text-base shadow-md hover:shadow-lg transform active:scale-98 transition-all flex items-center justify-center space-x-2">
+                        <span>🔥</span>
+                        <span id="txt-calc-btn">Calculate FLAMES</span>
+                    </button>
+                    <button id="btn-clear" class="w-full bg-slate-500 hover:bg-slate-600 text-white font-bold py-2.5 px-6 rounded-xl text-xs md:text-sm transition-all shadow-xs">
+                        Clear Fields
+                    </button>
+                </div>
+            </div>
+
+            <!-- Loader / Heart animation state -->
+            <div id="loader-container" class="hidden mt-6 py-8 flex flex-col items-center justify-center space-y-3">
+                <div class="relative">
+                    <div class="w-12 h-12 border-4 border-pink-200 border-t-pink-500 rounded-full animate-spin"></div>
+                    <span class="absolute inset-0 flex items-center justify-center text-lg">✨</span>
+                </div>
+                <p class="text-xs font-bold text-pink-500 uppercase tracking-widest animate-pulse" id="txt-loading">Analyzing Compatibility...</p>
+            </div>
+
+            <!-- Results Section -->
+            <div id="result-container" class="hidden mt-6 border-t border-slate-100 pt-6 transition-all">
+                <div class="text-center space-y-3">
+                    <div class="inline-block bg-pink-50 text-pink-700 font-bold px-3 py-1 rounded-full text-[10px] uppercase tracking-wider" id="txt-calc-done">
+                        Calculation Completed!
+                    </div>
+                    
+                    <!-- Result Status Circle -->
+                    <div class="flex justify-center py-2">
+                        <div id="result-badge-container" class="w-28 h-28 rounded-full flex flex-col items-center justify-center border-4 border-white shadow-xl relative overflow-hidden transition-all transform hover:scale-105">
+                            <span id="result-emoji" class="text-3xl mb-0.5 relative z-10">❤️</span>
+                            <span id="result-letter" class="text-2xl font-extrabold relative z-10 tracking-tight"></span>
+                        </div>
+                    </div>
+
+                    <!-- Custom Message and compatibility summary -->
+                    <h2 id="result-title" class="text-2xl font-extrabold text-slate-900 tracking-tight"></h2>
+                    <p id="result-description" class="max-w-md mx-auto text-xs md:text-sm text-slate-500 font-medium leading-relaxed"></p>
+
+                    <!-- Interactive Share Options -->
+                    <div class="pt-4 flex flex-wrap justify-center gap-2">
+                        <button id="btn-share-whatsapp" class="bg-[#25D366] hover:bg-[#20ba59] text-white font-bold py-2 px-4 rounded-lg text-xs transition-all flex items-center space-x-1.5 shadow-sm">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.717-1.458L0 24zm6.59-4.846c1.6.95 3.498 1.45 5.419 1.451 5.561 0 10.085-4.52 10.089-10.077.002-2.693-1.04-5.224-2.936-7.124-1.897-1.899-4.421-2.944-7.113-2.945-5.569 0-10.096 4.522-10.1 10.079-.001 1.848.482 3.655 1.4 5.257l-.989 3.61 3.704-.972zm8.448-3.116c.3-.15.5-.35.55-.45s.1-.2.05-.3-.2-.15-.5-.3c-.3-.15-1.75-.864-2.02-.964s-.45-.15-.65.15-.75.964-.92 1.15-.35.2-.65.05c-.3-.15-1.264-.467-2.407-1.485-.89-.793-1.49-1.772-1.665-2.07s-.02-.46.13-.61c.14-.13.3-.35.45-.5s.2-.3.3-.5.05-.375-.025-.525-.65-1.562-.9-2.162c-.24-.583-.49-.5-.65-.51-.15-.01-.35-.01-.55-.01s-.5.075-.775.375c-.275.3-1.05 1.025-1.05 2.5s1.075 2.9 1.225 3.1c.15.2 2.11 3.224 5.116 4.525.715.31 1.273.495 1.71.635.72.23 1.375.197 1.89.12.575-.085 1.75-.715 2.0-1.4s.25-1.275.175-1.4z"/></svg>
+                            <span id="txt-share-wa">Share on WhatsApp</span>
+                        </button>
+                        <button id="btn-copy-link" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded-lg text-xs transition-all flex items-center space-x-1.5 shadow-sm">
+                            <span>📋</span>
+                            <span id="txt-copy-res">Copy Result</span>
+                        </button>
+                    </div>
+
+                    <!-- Step-by-Step Breakdown Collapse -->
+                    <div class="mt-4 border border-pink-100 rounded-xl overflow-hidden bg-slate-50/50">
+                        <button id="btn-toggle-steps" class="w-full flex justify-between items-center px-4 py-3 text-left text-xs md:text-sm font-bold text-slate-800 hover:bg-slate-100/80 transition-all">
+                            <span id="txt-view-breakdown">🔍 View Step-by-Step Breakdown</span>
+                            <span id="arrow-steps" class="transform transition-transform text-pink-500 text-[10px]">▼</span>
+                        </button>
+                        
+                        <div id="steps-content" class="hidden px-4 pb-4 pt-1 text-left border-t border-pink-100 space-y-3">
+                            <!-- Raw letter matches -->
+                            <div>
+                                <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1" id="txt-step-matching">1. Match Analysis</h4>
+                                <div id="step-name1-display" class="flex flex-wrap gap-1 text-sm font-semibold text-slate-700 py-1"></div>
+                                <div id="step-name2-display" class="flex flex-wrap gap-1 text-sm font-semibold text-slate-700 py-1"></div>
+                            </div>
+                            
+                            <!-- Letter count details -->
+                            <div class="pt-2 border-t border-slate-100">
+                                <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1" id="txt-step-counts">2. Count Calculation</h4>
+                                <p class="text-xs text-slate-600 font-medium leading-relaxed" id="step-count-explanation"></p>
+                            </div>
+
+                            <!-- Elimination tracking -->
+                            <div class="pt-2 border-t border-slate-100">
+                                <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1" id="txt-step-elim">3. FLAMES Elimination Chain</h4>
+                                <div id="step-elimination-list" class="space-y-1 pt-1 font-mono text-xs text-slate-700"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Validation/Error Notice -->
+            <div id="error-toast" class="hidden mt-3 p-3 bg-rose-50 border border-rose-100 text-rose-700 text-xs font-semibold rounded-xl text-center"></div>
+        </div>
+
+        <!-- SEO Content & Keyword Cluster Articles -->
+        <div class="space-y-5">
+            
+            <!-- How to Use FLAMES Calculator with Keyword Cluster -->
+            <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 md:p-6 space-y-4">
+                <h3 class="text-lg font-bold text-slate-900 tracking-tight" id="how-to-use-title">
+                    How to Use the FLAMES Calculator for Relationship Compatibility
+                </h3>
+                <div class="prose prose-slate prose-xs leading-relaxed text-slate-600 space-y-3">
+                    <p>
+                        Using our <strong class="text-pink-600">FLAMES game online</strong> is the fastest way to compute relationship dynamics. This <strong class="text-pink-600">FLAMES calculator with names</strong> works as a swift and engaging <strong class="text-pink-600">relationship compatibility checker</strong>. Follow these straightforward instructions:
+                    </p>
+                    <ol class="list-decimal pl-4 space-y-1.5 text-xs md:text-sm">
+                        <li><strong>Input Names:</strong> Enter your full name and your crush's name into the distinct input boxes.</li>
+                        <li><strong>Initialize Test:</strong> Click on <strong class="text-slate-800">"Calculate FLAMES"</strong> to start the automated mathematical elimination algorithm.</li>
+                        <li><strong>Analyze Steps:</strong> Toggle the <strong class="text-slate-800">"Step-by-Step Breakdown"</strong> to review the letter striking and elimination sequence.</li>
+                        <li><strong>Share results:</strong> Click the WhatsApp or Clipboard copy button to share your <strong class="text-pink-600">love compatibility test</strong> results instantly.</li>
+                    </ol>
+                    <p class="text-xs">
+                        Whether you are exploring a potential crush or testing long-term friends, this digital <strong class="text-pink-600">FLAMES calculator meaning</strong> tool saves you the traditional effort of crossing letters out on scratch paper.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Main explanation block -->
+            <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 md:p-6">
+                <h3 class="text-lg font-bold text-slate-900 tracking-tight mb-3" id="section-1-title">
+                    What is the FLAMES Compatibility Test?
+                </h3>
+                <p class="text-slate-600 text-xs md:text-sm leading-relaxed" id="section-1-p1">
+                    FLAMES is a nostalgic, classic game traditionally played with pen and paper by students and young couples to predict relationship outcomes. The acronym stands for: **Friends, Love, Affection, Marriage, Enemy, and Sibling**.
+                </p>
+                <p class="text-slate-600 text-xs md:text-sm leading-relaxed mt-2.5" id="section-1-p2">
+                    While primarily used as an entertaining game, it provides an amusing, structured algorithm that continues to be a popular social media trend for exploring relationship chemistry.
+                </p>
+            </div>
+
+            <!-- Letter Meanings Card (Grid-based, visually matching cells) -->
+            <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 md:p-6">
+                <h3 class="text-lg font-bold text-slate-900 tracking-tight mb-4" id="section-3-title">
+                    FLAMES Letter Meanings & Symbols
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="meanings-grid">
+                    <!-- F -->
+                    <div class="p-3.5 rounded-xl bg-blue-50/60 border border-blue-100 flex items-start space-x-3">
+                        <span class="w-10 h-10 rounded-lg bg-blue-500 text-white font-extrabold text-lg flex items-center justify-center shadow-xs shrink-0">F</span>
+                        <div>
+                            <h4 class="font-bold text-blue-900 text-xs md:text-sm" id="m-f-title">Friends</h4>
+                            <p class="text-blue-700/80 text-[11px] mt-0.5" id="m-f-desc">A deep, comforting platonic relationship built on loyalty.</p>
+                        </div>
+                    </div>
+                    <!-- L -->
+                    <div class="p-3.5 rounded-xl bg-pink-50/60 border border-pink-100 flex items-start space-x-3">
+                        <span class="w-10 h-10 rounded-lg bg-pink-500 text-white font-extrabold text-lg flex items-center justify-center shadow-xs shrink-0">L</span>
+                        <div>
+                            <h4 class="font-bold text-pink-900 text-xs md:text-sm" id="m-l-title">Love</h4>
+                            <p class="text-pink-700/80 text-[11px] mt-0.5" id="m-l-desc">Deep romantic chemistry, head-over-heels adoration.</p>
+                        </div>
+                    </div>
+                    <!-- A -->
+                    <div class="p-3.5 rounded-xl bg-purple-50/60 border border-purple-100 flex items-start space-x-3">
+                        <span class="w-10 h-10 rounded-lg bg-purple-500 text-white font-extrabold text-lg flex items-center justify-center shadow-xs shrink-0">A</span>
+                        <div>
+                            <h4 class="font-bold text-purple-900 text-xs md:text-sm" id="m-a-title">Affection</h4>
+                            <p class="text-purple-700/80 text-[11px] mt-0.5" id="m-a-desc">A beautiful, warm connection filled with soft care.</p>
+                        </div>
+                    </div>
+                    <!-- M -->
+                    <div class="p-3.5 rounded-xl bg-emerald-50/60 border border-emerald-100 flex items-start space-x-3">
+                        <span class="w-10 h-10 rounded-lg bg-emerald-500 text-white font-extrabold text-lg flex items-center justify-center shadow-xs shrink-0">M</span>
+                        <div>
+                            <h4 class="font-bold text-emerald-900 text-xs md:text-sm" id="m-m-title">Marriage</h4>
+                            <p class="text-emerald-700/80 text-[11px] mt-0.5" id="m-m-desc">Destined life partners built to navigate life together.</p>
+                        </div>
+                    </div>
+                    <!-- E -->
+                    <div class="p-3.5 rounded-xl bg-amber-50/60 border border-amber-100 flex items-start space-x-3">
+                        <span class="w-10 h-10 rounded-lg bg-amber-500 text-white font-extrabold text-lg flex items-center justify-center shadow-xs shrink-0">E</span>
+                        <div>
+                            <h4 class="font-bold text-amber-900 text-xs md:text-sm" id="m-e-title">Enemy</h4>
+                            <p class="text-amber-700/80 text-[11px] mt-0.5" id="m-e-desc">A fiery rivalry or challenging clash that keeps you alert.</p>
+                        </div>
+                    </div>
+                    <!-- S -->
+                    <div class="p-3.5 rounded-xl bg-teal-50/60 border border-teal-100 flex items-start space-x-3">
+                        <span class="w-10 h-10 rounded-lg bg-teal-500 text-white font-extrabold text-lg flex items-center justify-center shadow-xs shrink-0">S</span>
+                        <div>
+                            <h4 class="font-bold text-teal-900 text-xs md:text-sm" id="m-s-title">Sibling</h4>
+                            <p class="text-teal-700/80 text-[11px] mt-0.5" id="m-s-desc">An unbreakable protective bond packed with supportive teasing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Highly Optimized FAQs Section -->
+            <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 md:p-6 space-y-4">
+                <h3 class="text-lg font-bold text-slate-900 tracking-tight" id="faq-section-title">
+                    Frequently Asked Questions (FAQ)
+                </h3>
+                <div class="space-y-3">
+                    
+                    <!-- FAQ Item 1 -->
+                    <div class="border border-slate-100 rounded-xl overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center px-4 py-3 bg-slate-50 hover:bg-slate-100/70 transition-all text-left">
+                            <span class="text-xs md:text-sm font-bold text-slate-800">Is the FLAMES calculator accurate?</span>
+                            <span class="faq-icon text-[10px] text-pink-500 transform transition-transform">▼</span>
+                        </button>
+                        <div class="faq-content hidden px-4 py-3 text-xs text-slate-600 leading-relaxed bg-white border-t border-slate-100">
+                            The FLAMES game is an entertainment algorithm based solely on name spelling patterns. It is a legendary game played for fun and amusement; its compatibility results should not be used to make serious, real-life relationship decisions.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="border border-slate-100 rounded-xl overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center px-4 py-3 bg-slate-50 hover:bg-slate-100/70 transition-all text-left">
+                            <span class="text-xs md:text-sm font-bold text-slate-800">How are identical letters matched and calculated?</span>
+                            <span class="faq-icon text-[10px] text-pink-500 transform transition-transform">▼</span>
+                        </button>
+                        <div class="faq-content hidden px-4 py-3 text-xs text-slate-600 leading-relaxed bg-white border-t border-slate-100">
+                            Our code searches both names and strikes out each matching letter. For example, if Name 1 has two 'a's and Name 2 has one 'a', one 'a' from each name is cancelled out, leaving the extra 'a' to count towards the FLAMES elimination index.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="border border-slate-100 rounded-xl overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center px-4 py-3 bg-slate-50 hover:bg-slate-100/70 transition-all text-left">
+                            <span class="text-xs md:text-sm font-bold text-slate-800">Can I write my middle or last name?</span>
+                            <span class="faq-icon text-[10px] text-pink-500 transform transition-transform">▼</span>
+                        </button>
+                        <div class="faq-content hidden px-4 py-3 text-xs text-slate-600 leading-relaxed bg-white border-t border-slate-100">
+                            Yes! You can use first names only, or include middle and last names. Including full names changes the leftover letter count and leads to different relationship dynamics and compatibility results!
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div class="border border-slate-100 rounded-xl overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center px-4 py-3 bg-slate-50 hover:bg-slate-100/70 transition-all text-left">
+                            <span class="text-xs md:text-sm font-bold text-slate-800">Does it support multiple languages?</span>
+                            <span class="faq-icon text-[10px] text-pink-500 transform transition-transform">▼</span>
+                        </button>
+                        <div class="faq-content hidden px-4 py-3 text-xs text-slate-600 leading-relaxed bg-white border-t border-slate-100">
+                            Absolutely! Our tool is fully translated into English, Tamil (தமிழ்), and Hindi (हिंदी). You can switch between languages at any time using the selector at the top header.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full bg-slate-900 text-slate-400 py-8 px-6 border-t border-slate-800 text-xs">
+        <div class="max-w-3xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <div>
+                <p class="font-extrabold text-white text-sm tracking-tight mb-0.5">flamescalculator.in</p>
+                <p>&copy; 2026 FLAMES Calculator. All rights reserved.</p>
+                <p class="text-[9px] text-slate-500 mt-1 max-w-md">Disclaimer: FLAMES is a playful compatibility calculator. Predictions should not be used for real life planning.</p>
+            </div>
+            <div class="flex flex-wrap gap-3 text-slate-400 font-semibold">
+                <a href="contact.html" class="hover:text-white transition-all">Contact Us</a>
+                <span class="text-slate-800">|</span>
+                <a href="#about" class="hover:text-white transition-all">About Game</a>
+                <span class="text-slate-800">|</span>
+                <a href="#privacy" class="hover:text-white transition-all">Privacy</a>
+                <span class="text-slate-800">|</span>
+                <a href="#terms" class="hover:text-white transition-all">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Multi-Language Translation Map
+        const locales = {
+            en: {
+                heroTitle: "FLAMES Relationship Calculator",
+                heroSubtitle: "Find your true relationship compatibility status based on names",
+                lblYourName: "Your Name",
+                lblPartnerName: "Partner's Name",
+                placeholderYourName: "Enter your name",
+                placeholderPartnerName: "Enter partner's name",
+                btnCalc: "Calculate FLAMES",
+                btnClear: "Clear Fields",
+                errEmpty: "⚠️ Please enter both names first!",
+                errSame: "⚠️ Names must contain letters and not be fully identical!",
+                analyzing: "Analyzing Compatibility...",
+                calcDone: "Calculation Completed!",
+                shareWa: "Share on WhatsApp",
+                copyRes: "Copy Result",
+                viewBreakdown: "🔍 View Step-by-Step Breakdown",
+                hideBreakdown: "🔍 Hide Step-by-Step Breakdown",
+                stepMatching: "1. Match Analysis",
+                stepCounts: "2. Count Calculation",
+                stepElim: "3. FLAMES Elimination Chain",
+                copiedAlert: "Result copied to clipboard!",
+                m_f_title: "Friends",
+                m_f_desc: "A deep, comforting platonic relationship built on loyalty.",
+                m_l_title: "Love",
+                m_l_desc: "Deep romantic chemistry, head-over-heels adoration.",
+                m_a_title: "Affection",
+                m_a_desc: "A beautiful, warm connection filled with soft care.",
+                m_m_title: "Marriage",
+                m_m_desc: "Destined life partners built to navigate life together.",
+                m_e_title: "Enemy",
+                m_e_desc: "A fiery rivalry or challenging clash that keeps you alert.",
+                m_s_title: "Sibling",
+                m_s_desc: "An unbreakable protective bond packed with supportive teasing.",
+                f_result_desc: "You both share a spectacular natural friendship. You easily connect, talk for hours, and back each other up unconditionally!",
+                l_result_desc: "Romantic bliss is written in the stars! You two share deep magnetic love chemistry, strong feelings, and infinite care.",
+                a_result_desc: "There is an abundant, soft, and gentle affection between you both. You genuinely enjoy and value each other's warm presence.",
+                m_result_desc: "A perfectly compatible union! Your future signs strongly towards lifelong partnership, mutual development, and a happy home.",
+                e_result_desc: "Sparks fly in funny ways! You both share an adventurous, competitive rivalry. You keep each other dynamically alert.",
+                s_result_desc: "Your connection holds a supportive protective nature. You care, look out for, and support one another like true siblings."
+            },
+            ta: {
+                heroTitle: "பிளேம்ஸ் (FLAMES) கணிப்பான்",
+                heroSubtitle: "பெயர்களை வைத்து உங்கள் காதல் பொருத்தத்தை உடனே அறியுங்கள்",
+                lblYourName: "உங்கள் பெயர்",
+                lblPartnerName: "இணையின் பெயர்",
+                placeholderYourName: "உங்கள் பெயரை உள்ளிடவும்",
+                placeholderPartnerName: "இணையின் பெயரை உள்ளிடவும்",
+                btnCalc: "பொருத்தம் காண்க",
+                btnClear: "அழிக்கவும்",
+                errEmpty: "⚠️ தயவுசெய்து இரண்டு பெயர்களையும் உள்ளிடவும்!",
+                errSame: "⚠️ பெயர்களில் எழுத்துக்கள் இருக்க வேண்டும் மற்றும் அவை முற்றிலும் ஒரே மாதிரியாக இருக்கக்கூடாது!",
+                analyzing: "பொருத்தத்தை பகுப்பாய்வு செய்கிறது...",
+                calcDone: "பகுப்பாய்வு முடிந்தது!",
+                shareWa: "வாட்ஸ்அப்பில் பகிர்க",
+                copyRes: "முடிவை நகலெடு",
+                viewBreakdown: "🔍 படிப்படியான விவரத்தைக் காட்டு",
+                hideBreakdown: "🔍 படிப்படியான விவரத்தை மறை",
+                stepMatching: "1. எழுத்து ஒற்றுமை பகுப்பாய்வு",
+                stepCounts: "2. மீதமுள்ள எழுத்துக்களின் எண்ணிக்கை",
+                stepElim: "3. பிளேம்ஸ் நீக்கல் முறைமை",
+                copiedAlert: "முடிவு நகலெடுக்கப்பட்டது!",
+                m_f_title: "நண்பர்கள் (Friends)",
+                m_f_desc: "நம்பிக்கை, சிரிப்பு மற்றும் வாழ்நாள் முழுவதும் நீடிக்கும் உண்மையுள்ள நட்பு.",
+                m_l_title: "காதல் (Love)",
+                m_l_desc: "உண்மையான காதல் உறவு. ஈர்ப்பு மற்றும் ஒருவரையொருவர் ஆழமாகப் புரிந்து கொள்ளும் தன்மை.",
+                m_a_title: "பாசம் (Affection)",
+                m_a_desc: "அழகான, மென்மையான பாசம். பரஸ்பர ஆதரவு மற்றும் ஒருவரை ஒருவர் விரும்பும் தன்மை.",
+                m_m_title: "திருமணம் (Marriage)",
+                m_m_desc: "நிச்சயிக்கப்பட்ட வாழ்க்கை துணைகள்! இணைந்து இல்லறம் அமைத்து மகிழ்ச்சியாக வாழ்பவர்கள்.",
+                m_e_title: "எதிரி (Enemy)",
+                m_e_desc: "ஒரு விளையாட்டுத்தனமான, காரசாரமான போட்டி அல்லது சவாலான ஆளுமை மோதல்.",
+                m_s_title: "சகோதரன்/சகோதரி (Sibling)",
+                m_s_desc: "பாதுகாப்பான மற்றும் ஆழமான பாசப்பிணைப்புடன் கூடிய உறவு.",
+                f_result_desc: "நீங்கள் இருவரும் ஒரு சிறந்த இயற்கை நட்பைப் பகிர்ந்து கொள்கிறீர்கள். நிபந்தனையின்றி ஒருவருக்கொருவர் ஆதரவளிப்பீர்கள்!",
+                l_result_desc: "உங்கள் இருவரிடையே ஆழமான காதல் வேதியியல், வலுவான உணர்வுகள் மற்றும் முடிவில்லா கவனிப்பு உள்ளது.",
+                a_result_desc: "உங்கள் இருவருக்கும் இடையே ஏராளமான, மென்மையான பாசம் உள்ளது. நீங்கள் ஒருவருக்கொருவர் இருப்பதை மனதார ரசிப்பீர்கள்.",
+                m_result_desc: "ஒரு சரியான ஜோடி! உங்கள் எதிர்காலம் வாழ்நாள் முழுவதும் நீடிக்கும் மகிழ்ச்சியான திருமண வாழ்க்கையை நோக்கிச் செல்கிறது.",
+                e_result_desc: "உங்கள் இருவருக்குள் ஒரு சுவாரஸ்யமான போட்டி அல்லது சவாலான கருத்து வேறுபாடுகள் எழும். ஆனால் அது சுவாரஸ்யமானது.",
+                s_result_desc: "உங்கள் இருவரிடையே உள்ள பிணைப்பு ஒருவரை ஒருவர் பாதுகாக்கும் மற்றும் கவனித்துக் கொள்ளும் சகோதரத்துவ குணமுடையது."
+            },
+            hi: {
+                heroTitle: "फ्लेम्स (FLAMES) कैलकुलेटर",
+                heroSubtitle: "नामों के आधार पर अपने रिश्ते की अनुकूलता का पता लगाएं",
+                lblYourName: "आपका नाम",
+                lblPartnerName: "साथी का नाम",
+                placeholderYourName: "अपना नाम दर्ज करें",
+                placeholderPartnerName: "साथी का नाम दर्ज करें",
+                btnCalc: "फ्लेम्स जांचें",
+                btnClear: "साफ करें",
+                errEmpty: "⚠️ कृपया पहले दोनों नाम दर्ज करें!",
+                errSame: "⚠️ नामों में अक्षर होने चाहिए और वे पूरी तरह से एक समान नहीं होने चाहिए!",
+                analyzing: "रिश्ते की अनुकूलता जांची जा रही है...",
+                calcDone: "गणना पूर्ण हुई!",
+                shareWa: "व्हाट्सएप पर साझा करें",
+                copyRes: "परिणाम कॉपी करें",
+                viewBreakdown: "🔍 चरण-दर-चरण स्पष्टीकरण देखें",
+                hideBreakdown: "🔍 स्पष्टीकरण छुपाएं",
+                stepMatching: "1. अक्षर मिलान विश्लेषण",
+                stepCounts: "2. शेष अक्षरों की गणना",
+                stepElim: "3. फ्लेम्स हटाने का चक्र",
+                copiedAlert: "परिणाम कॉपी हो गया!",
+                m_f_title: "मित्रता (Friends)",
+                m_f_desc: "एक गहरा, आरामदेह और भरोसेमंद रिश्ता जो आपसी विश्वास और जीवन भर के सहयोग से भरा हो।",
+                m_l_title: "प्रेम (Love)",
+                m_l_desc: "सच्चा रोमांटिक संबंध। एक-दूसरे के प्रति गहरा खिंचाव, समझ और असीम प्यार।",
+                m_a_title: "स्नेह (Affection)",
+                m_a_desc: "एक खूबसूरत और प्यारा आकर्षण। एक-दूसरे की चिंता करना और साथ में सहज महसूस करना।",
+                m_m_title: "विवाह (Marriage)",
+                m_m_desc: "भाग्य द्वारा तय किए गए जीवनसाथी! जो मिलकर एक प्यारा घर और सुखी जीवन बनाते हैं।",
+                m_e_title: "शत्रु (Enemy)",
+                m_e_desc: "एक चंचल, तीखी प्रतिद्वंद्विता या चुनौतीपूर्ण व्यक्तित्वों का टकराव जो रोमांचक हो।",
+                m_s_title: "भाई-बहन (Sibling)",
+                m_s_desc: "एक अटूट सुरक्षात्मक रिश्ता, जो नोकझोंक और गहरे पारिवारिक स्नेह से भरपूर हो।",
+                f_result_desc: "आप दोनों के बीच एक बेहतरीन स्वाभाविक मित्रता है। आप खुलकर बातें कर सकते हैं और एक-दूसरे के सच्चे मार्गदर्शक हैं!",
+                l_result_desc: "आप दोनों के बीच गहरा प्रेम संबंध है। आप दोनों की रोमांटिक केमिस्ट्री शानदार है और भविष्य में गहरा लगाव रहेगा।",
+                a_result_desc: "आप दोनों के दिलों में एक-दूसरे के प्रति कोमल और गहरा स्नेह है। आप साथ में बेहद खुश महसूस करते हैं।",
+                m_result_desc: "परफेक्ट मैच! आपका रिश्ता एक अटूट विवाह बंधन, जीवन भर की खुशियों और विश्वास की ओर इशारा करता है।",
+                e_result_desc: "आप दोनों के विचार आपस में बहुत टकराते हैं। यह एक मीठी नोकझोंक वाला या हमेशा सतर्क रखने वाला रिश्ता है।",
+                s_result_desc: "आपके बीच का रिश्ता एक-दूसरे की रक्षा करने वाला और बहुत ही प्यार भरा है, ठीक वैसे ही जैसे सच्चे भाई-बहन का होता है।"
+            }
+        };
+
+        // UI Meta Helper for Flames Letters
+        const flamesInfo = {
+            'F': { emoji: '🤝', color: 'bg-blue-500', text: 'text-blue-500', border: 'border-blue-500', nameKey: 'm_f_title', descKey: 'm_f_desc', resDescKey: 'f_result_desc' },
+            'L': { emoji: '❤️', color: 'bg-pink-500', text: 'text-pink-500', border: 'border-pink-500', nameKey: 'm_l_title', descKey: 'm_l_desc', resDescKey: 'l_result_desc' },
+            'A': { emoji: '✨', color: 'bg-purple-500', text: 'text-purple-500', border: 'border-purple-500', nameKey: 'm_a_title', descKey: 'm_a_desc', resDescKey: 'a_result_desc' },
+            'M': { emoji: '💍', color: 'bg-emerald-500', text: 'text-emerald-500', border: 'border-emerald-500', nameKey: 'm_m_title', descKey: 'm_m_desc', resDescKey: 'm_result_desc' },
+            'E': { emoji: '⚡', color: 'bg-amber-500', text: 'text-amber-500', border: 'border-amber-500', nameKey: 'm_e_title', descKey: 'm_e_desc', resDescKey: 'e_result_desc' },
+            'S': { emoji: '🙌', color: 'bg-teal-500', text: 'text-teal-500', border: 'border-teal-500', nameKey: 'm_s_title', descKey: 'm_s_desc', resDescKey: 's_result_desc' }
+        };
+
+        // App States
+        let currentLang = 'en';
+        let latestResult = null;
+
+        // Dom Elements
+        const elLangSelect = document.getElementById('lang-select');
+        const elHeroTitle = document.getElementById('hero-title');
+        const elHeroSubtitle = document.getElementById('hero-subtitle');
+        const elLabelYourName = document.getElementById('label-your-name');
+        const elLabelPartnerName = document.getElementById('label-partner-name');
+        const elName1 = document.getElementById('name1');
+        const elName2 = document.getElementById('name2');
+        const elBtnCalculate = document.getElementById('btn-calculate');
+        const elBtnClear = document.getElementById('btn-clear');
+        const elLoaderContainer = document.getElementById('loader-container');
+        const elResultContainer = document.getElementById('result-container');
+        const elTxtLoading = document.getElementById('txt-loading');
+        const elTxtCalcDone = document.getElementById('txt-calc-done');
+        const elResultBadgeContainer = document.getElementById('result-badge-container');
+        const elResultEmoji = document.getElementById('result-emoji');
+        const elResultLetter = document.getElementById('result-letter');
+        const elResultTitle = document.getElementById('result-title');
+        const elResultDescription = document.getElementById('result-description');
+        const elBtnShareWhatsapp = document.getElementById('btn-share-whatsapp');
+        const elBtnCopyLink = document.getElementById('btn-copy-link');
+        const elBtnToggleSteps = document.getElementById('btn-toggle-steps');
+        const elStepsContent = document.getElementById('steps-content');
+        const elArrowSteps = document.getElementById('arrow-steps');
+        const elErrorToast = document.getElementById('error-toast');
+        const elSec1Title = document.getElementById('section-1-title');
+        const elSec1P1 = document.getElementById('section-1-p1');
+        const elSec1P2 = document.getElementById('section-1-p2');
+        const elSec3Title = document.getElementById('section-3-title');
+        const elStepName1Display = document.getElementById('step-name1-display');
+        const elStepName2Display = document.getElementById('step-name2-display');
+        const elStepCountExplanation = document.getElementById('step-count-explanation');
+        const elStepEliminationList = document.getElementById('step-elimination-list');
+
+        // Elegant Toast Mechanism (Avoids alert popups entirely)
+        function showToast(message) {
+            const elToast = document.getElementById('toast-notification');
+            const elMsg = document.getElementById('toast-message');
+            elMsg.textContent = message;
+            
+            elToast.classList.remove('opacity-0', 'pointer-events-none', 'scale-90');
+            elToast.classList.add('opacity-100', 'scale-100');
+
+            setTimeout(() => {
+                elToast.classList.add('opacity-0', 'pointer-events-none', 'scale-90');
+                elToast.classList.remove('opacity-100', 'scale-100');
+            }, 3000);
+        }
+
+        // Language Translation Handler
+        function changeLanguage(lang) {
+            currentLang = lang;
+            const t = locales[lang];
+
+            elHeroTitle.textContent = t.heroTitle;
+            elHeroSubtitle.textContent = t.heroSubtitle;
+            elLabelYourName.textContent = t.lblYourName;
+            elLabelPartnerName.textContent = t.lblPartnerName;
+            elName1.placeholder = t.placeholderYourName;
+            elName2.placeholder = t.placeholderPartnerName;
+            document.getElementById('txt-calc-btn').textContent = t.btnCalc;
+            elBtnClear.textContent = t.btnClear;
+            elTxtLoading.textContent = t.analyzing;
+            elTxtCalcDone.textContent = t.calcDone;
+            document.getElementById('txt-share-wa').textContent = t.shareWa;
+            document.getElementById('txt-copy-res').textContent = t.copyRes;
+            
+            const isStepsHidden = elStepsContent.classList.contains('hidden');
+            document.getElementById('txt-view-breakdown').textContent = isStepsHidden ? t.viewBreakdown : t.hideBreakdown;
+            document.getElementById('txt-step-matching').textContent = t.stepMatching;
+            document.getElementById('txt-step-counts').textContent = t.stepCounts;
+            document.getElementById('txt-step-elim').textContent = t.stepElim;
+
+            // Info and Article Headers translation
+            elSec1Title.innerHTML = lang === 'ta' ? 'பிளேம்ஸ் (FLAMES) கணிப்பான் என்றால் என்ன?' : (lang === 'hi' ? 'फ्लेम्स (FLAMES) कैलकुलेटर क्या है?' : 'What is the FLAMES Compatibility Test?');
+            elSec3Title.innerHTML = lang === 'ta' ? 'பிளேம்ஸ் எழுத்துக்களின் விளக்கங்கள்' : (lang === 'hi' ? 'फ्लेम्स अक्षरों के अर्थ और प्रतीक' : 'FLAMES Letter Meanings & Symbols');
+            document.getElementById('how-to-use-title').textContent = lang === 'ta' ? 'பிளேம்ஸ் கணிப்பானை எவ்வாறு பயன்படுத்துவது?' : (lang === 'hi' ? 'फ्लेम्स कैलकुलेटर का उपयोग कैसे करें?' : 'How to Use the FLAMES Calculator for Relationship Compatibility');
+
+            if (lang === 'ta') {
+                elSec1P1.textContent = "FLAMES என்பது பள்ளி மற்றும் கல்லூரி மாணவர்களால் பல தலைமுறைகளாக விளையாடப்படும் ஒரு பாரம்பரிய விளையாட்டு. FLAMES என்பதன் விரிவாக்கம்: Friends (நண்பர்கள்), Love (காதல்), Affection (பாசம்), Marriage (திருமணம்), Enemy (எதிரி), மற்றும் Sister/Brother (சகோதரத்துவ முறை).";
+                elSec1P2.textContent = "காகிதம் மற்றும் பேனா மூலம் கணக்கிடப்பட்ட இந்த விளையாட்டை தற்போதைய நவீன முறையில் துல்லியமாகவும் அழகான படிப்படியான விளக்கங்களுடனும் உங்கள் கணினியிலோ அல்லது கைபேசியிலோ நொடியில் கண்டறிய இந்த இணைய தளம் உதவுகிறது.";
+            } else if (lang === 'hi') {
+                elSec1P1.textContent = "FLAMES एक लोकप्रिय और पुराना गेम है जो प्रेमियों और मित्रों के बीच अत्यधिक प्रसिद्ध रहा है। इसका पूर्ण रूप है: Friends (मित्रता), Love (प्रेम), Affection (स्नेह), Marriage (विवाह), Enemy (शत्रु), और Sibling (भाई-बहन)।";
+                elSec1P2.textContent = "पहले कॉपी-पेन से खेले जाने वाले इस रोमांचक गेम को अब आप हमारे डिजिटल कैलकुलेटर के माध्यम से बेहद आकर्षक तरीके से और सुंदर ग्राफिक्स के साथ सेकंडों में खेल सकते हैं।";
+            } else {
+                elSec1P1.textContent = "FLAMES is a nostalgic, classic game traditionally played with pen and paper by students and young couples to predict relationship outcomes. The acronym stands for: Friends, Love, Affection, Marriage, Enemy, and Sibling.";
+                elSec1P2.textContent = "While primarily used as an entertaining game, it provides an amusing, structured algorithm that continues to be a popular social media trend for exploring relationship chemistry.";
+            }
+
+            // Update Dynamic Meanings Cards
+            Object.keys(flamesInfo).forEach(key => {
+                const info = flamesInfo[key];
+                document.getElementById(`m-${key.toLowerCase()}-title`).textContent = t[info.nameKey];
+                document.getElementById(`m-${key.toLowerCase()}-desc`).textContent = t[info.descKey];
+            });
+
+            if (latestResult) {
+                renderResultUI(latestResult);
+            }
+        }
+
+        // Language Select Listener
+        elLangSelect.addEventListener('change', (e) => {
+            changeLanguage(e.target.value);
+        });
+
+        // Toggle FAQs Accordion
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('.faq-icon');
+                const isHidden = content.classList.contains('hidden');
+
+                // Close all other FAQs
+                document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
+                document.querySelectorAll('.faq-icon').forEach(i => i.textContent = '▼');
+
+                if (isHidden) {
+                    content.classList.remove('hidden');
+                    icon.textContent = '▲';
+                } else {
+                    content.classList.add('hidden');
+                    icon.textContent = '▼';
+                }
+            });
+        });
+
+        function hideError() {
+            elErrorToast.classList.add('hidden');
+        }
+
+        function showError(msg) {
+            elErrorToast.textContent = msg;
+            elErrorToast.classList.remove('hidden');
+            elResultContainer.classList.add('hidden');
+            elLoaderContainer.classList.add('hidden');
+        }
+
+        // FLAMES Algorithm with Breakdown Tracking
+        function calculateFLAMESRaw(name1, name2) {
+            const rawN1 = name1.toLowerCase().replace(/[^a-z]/g, '');
+            const rawN2 = name2.toLowerCase().replace(/[^a-z]/g, '');
+
+            if (rawN1.length === 0 || rawN2.length === 0) {
+                return null;
+            }
+
+            let arr1 = rawN1.split('');
+            let arr2 = rawN2.split('');
+            let cancel1 = new Array(arr1.length).fill(false);
+            let cancel2 = new Array(arr2.length).fill(false);
+
+            for (let i = 0; i < arr1.length; i++) {
+                const char = arr1[i];
+                const matchIdx = arr2.findIndex((c, idx) => c === char && !cancel2[idx]);
+                if (matchIdx !== -1) {
+                    cancel1[i] = true;
+                    cancel2[matchIdx] = true;
+                }
+            }
+
+            const leftoverN1 = arr1.filter((_, idx) => !cancel1[idx]);
+            const leftoverN2 = arr2.filter((_, idx) => !cancel2[idx]);
+            const count = leftoverN1.length + leftoverN2.length;
+
+            let origFlames = ['F', 'L', 'A', 'M', 'E', 'S'];
+            let currentList = [...origFlames];
+            let steps = [];
+            let lastIndex = 0;
+
+            if (count > 0) {
+                while (currentList.length > 1) {
+                    let size = currentList.length;
+                    let elimIdx = (lastIndex + count - 1) % size;
+                    let eliminatedLetter = currentList[elimIdx];
+                    
+                    steps.push({
+                        before: [...currentList],
+                        eliminated: eliminatedLetter,
+                        elimIdx: elimIdx,
+                        startIndex: lastIndex
+                    });
+
+                    currentList.splice(elimIdx, 1);
+                    lastIndex = elimIdx % currentList.length;
+                }
+            } else {
+                currentList = ['F'];
+                steps.push({
+                    before: [...origFlames],
+                    eliminated: 'All matches cancelled!',
+                    elimIdx: -1,
+                    startIndex: 0
+                });
+            }
+
+            return {
+                name1Arr: arr1,
+                name1Cancel: cancel1,
+                name2Arr: arr2,
+                name2Cancel: cancel2,
+                leftoverCount: count,
+                leftover1: leftoverN1,
+                leftover2: leftoverN2,
+                steps: steps,
+                resultLetter: currentList[0]
+            };
+        }
+
+        // Render Results inside the card
+        function renderResultUI(res) {
+            const t = locales[currentLang];
+            const info = flamesInfo[res.resultLetter];
+
+            elResultBadgeContainer.className = `w-28 h-28 rounded-full flex flex-col items-center justify-center border-4 border-white shadow-xl relative overflow-hidden transition-all transform hover:scale-105 ${info.color} text-white`;
+            elResultEmoji.textContent = info.emoji;
+            elResultLetter.textContent = res.resultLetter;
+            
+            elResultTitle.textContent = t[info.nameKey];
+            elResultDescription.textContent = t[info.resDescKey];
+
+            // Render matching visual lists
+            elStepName1Display.innerHTML = '';
+            res.name1Arr.forEach((char, i) => {
+                const span = document.createElement('span');
+                span.className = `inline-flex items-center justify-center w-7 h-7 rounded-lg font-bold text-xs text-slate-800 ${res.name1Cancel[i] ? 'bg-rose-100 text-rose-500 line-through' : 'bg-slate-100'}`;
+                span.textContent = char.toUpperCase();
+                elStepName1Display.appendChild(span);
+            });
+
+            elStepName2Display.innerHTML = '';
+            res.name2Arr.forEach((char, i) => {
+                const span = document.createElement('span');
+                span.className = `inline-flex items-center justify-center w-7 h-7 rounded-lg font-bold text-xs text-slate-800 ${res.name2Cancel[i] ? 'bg-rose-100 text-rose-500 line-through' : 'bg-slate-100'}`;
+                span.textContent = char.toUpperCase();
+                elStepName2Display.appendChild(span);
+            });
+
+            // Set dynamic explanation counts
+            let countExpr = '';
+            if (currentLang === 'ta') {
+                countExpr = `முதல் பெயரில் எஞ்சியவை: <strong>${res.leftover1.length}</strong> [${res.leftover1.join(', ').toUpperCase() || 'ஏதுமில்லை'}]<br>இரண்டாம் பெயரில் எஞ்சியவை: <strong>${res.leftover2.length}</strong> [${res.leftover2.join(', ').toUpperCase() || 'ஏதுமில்லை'}]<br>மொத்த கூடுதல் எண்ணிக்கை = <strong>${res.leftoverCount}</strong> ஆகும்.`;
+            } else if (currentLang === 'hi') {
+                countExpr = `पहले नाम में बचे अक्षर: <strong>${res.leftover1.length}</strong> [${res.leftover1.join(', ').toUpperCase() || 'कोई नहीं'}]<br>दूसरे नाम में बचे अक्षर: <strong>${res.leftover2.length}</strong> [${res.leftover2.join(', ').toUpperCase() || 'कोई नहीं'}]<br>कुल बची संख्या = <strong>${res.leftoverCount}</strong>`;
+            } else {
+                countExpr = `Remaining in first name: <strong>${res.leftover1.length}</strong> [${res.leftover1.join(', ').toUpperCase() || 'none'}]<br>Remaining in second name: <strong>${res.leftover2.length}</strong> [${res.leftover2.join(', ').toUpperCase() || 'none'}]<br>Total leftover count (N) = <strong>${res.leftoverCount}</strong>`;
+            }
+            elStepCountExplanation.innerHTML = countExpr;
+
+            // Render Elimination Chains
+            elStepEliminationList.innerHTML = '';
+            if (res.leftoverCount === 0) {
+                const p = document.createElement('div');
+                p.className = 'py-1 font-semibold text-purple-700';
+                p.textContent = currentLang === 'ta' ? 'அனைத்து எழுத்துக்களும் ஒன்றோடொன்று பொருந்திவிட்டதால் தானாகவே நட்பு (F) தேர்வாகிறது.' : (currentLang === 'hi' ? 'सभी अक्षर आपस में मिल गए, इसलिए डिफ़ॉल्ट रूप से मित्रता (F) को चुना गया है।' : 'All letters matched and cancelled! Automatically selecting Friends (F).');
+                elStepEliminationList.appendChild(p);
+            } else {
+                res.steps.forEach((step, stepIdx) => {
+                    const row = document.createElement('div');
+                    row.className = 'py-1 flex items-center justify-between border-b border-slate-100/50 pb-1 last:border-0';
+                    
+                    let statusChainHtml = step.before.map((letter, lIdx) => {
+                        if (letter === step.eliminated) {
+                            return `<span class="bg-red-500 text-white font-extrabold px-1 py-0.5 rounded text-[10px] line-through">${letter}</span>`;
+                        } else if (lIdx === step.startIndex) {
+                            return `<span class="border border-purple-400 text-purple-700 font-extrabold px-1 py-0.5 rounded text-[10px]" title="Count started here">🏁${letter}</span>`;
+                        }
+                        return `<span class="bg-slate-200 text-slate-700 font-bold px-1 py-0.5 rounded text-[10px]">${letter}</span>`;
+                    }).join(' ➔ ');
+
+                    let stepLabel = currentLang === 'ta' ? `படி ${stepIdx + 1}:` : (currentLang === 'hi' ? `चरण ${stepIdx + 1}:` : `Step ${stepIdx + 1}:`);
+
+                    row.innerHTML = `
+                        <span class="font-bold text-slate-500 text-[10px] w-12">${stepLabel}</span>
+                        <div class="flex-grow flex items-center space-x-1 flex-wrap">${statusChainHtml}</div>
+                        <span class="text-[9px] bg-red-100 text-red-700 px-1 py-0.5 rounded font-extrabold uppercase">-${step.eliminated}</span>
+                    `;
+                    elStepEliminationList.appendChild(row);
+                });
+            }
+        }
+
+        // Calculation Trigger
+        elBtnCalculate.addEventListener('click', () => {
+            hideError();
+            
+            const n1 = elName1.value.trim();
+            const n2 = elName2.value.trim();
+            const t = locales[currentLang];
+
+            if (!n1 || !n2) {
+                showError(t.errEmpty);
+                return;
+            }
+
+            const res = calculateFLAMESRaw(n1, n2);
+            if (!res) {
+                showError(t.errSame);
+                return;
+            }
+
+            latestResult = res;
+            elResultContainer.classList.add('hidden');
+            elLoaderContainer.classList.remove('hidden');
+
+            setTimeout(() => {
+                elLoaderContainer.classList.add('hidden');
+                renderResultUI(res);
+                elResultContainer.classList.remove('hidden');
+                elResultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 800);
+        });
+
+        // Clear Trigger
+        elBtnClear.addEventListener('click', () => {
+            elName1.value = '';
+            elName2.value = '';
+            latestResult = null;
+            hideError();
+            elResultContainer.classList.add('hidden');
+            elLoaderContainer.classList.add('hidden');
+        });
+
+        // Toggle Breakdown steps
+        elBtnToggleSteps.addEventListener('click', () => {
+            const isHidden = elStepsContent.classList.contains('hidden');
+            const t = locales[currentLang];
+
+            if (isHidden) {
+                elStepsContent.classList.remove('hidden');
+                elArrowSteps.textContent = '▲';
+                document.getElementById('txt-view-breakdown').textContent = t.hideBreakdown;
+            } else {
+                elStepsContent.classList.add('hidden');
+                elArrowSteps.textContent = '▼';
+                document.getElementById('txt-view-breakdown').textContent = t.viewBreakdown;
+            }
+        });
+
+        // Copy Text Link Handler
+        elBtnCopyLink.addEventListener('click', () => {
+            if (!latestResult) return;
+            
+            const t = locales[currentLang];
+            const info = flamesInfo[latestResult.resultLetter];
+            const shareText = `🔥 FLAMES Calculator Result! 🔥\n\n👤 ${elName1.value.trim().toUpperCase()}  +  💖 ${elName2.value.trim().toUpperCase()}\n\n✨ Result: ${latestResult.resultLetter} - ${t[info.nameKey]}\n👉 ${t[info.resDescKey]}\n\nCheck yours now at flamescalculator.in!`;
+            
+            const dummy = document.createElement("textarea");
+            document.body.appendChild(dummy);
+            dummy.value = shareText;
+            dummy.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummy);
+
+            showToast(t.copiedAlert || "Result copied to clipboard!");
+        });
+
+        // WhatsApp Share Trigger
+        elBtnShareWhatsapp.addEventListener('click', () => {
+            if (!latestResult) return;
+
+            const t = locales[currentLang];
+            const info = flamesInfo[latestResult.resultLetter];
+            const shareText = `🔥 *FLAMES Calculator Result!* 🔥\n\n*Name 1:* ${elName1.value.trim().toUpperCase()}\n*Name 2:* ${elName2.value.trim().toUpperCase()}\n\n*Result:* ${latestResult.resultLetter} - ${t[info.nameKey]} ${info.emoji}\n👉 _${t[info.resDescKey]}_\n\nCalculate yours at https://flamescalculator.in!`;
+            
+            const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
+            window.open(url, '_blank');
+        });
+
+        // Init language setting on document load
+        window.addEventListener('DOMContentLoaded', () => {
+            changeLanguage('en');
+        });
+    </script>
+</body>
+</html>
+
+```
